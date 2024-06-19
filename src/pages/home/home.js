@@ -11,7 +11,7 @@ function Home() {
   ];
   return (
     <div className="main-home">
-      <h1 className="h1-home">ESTUDIANTES</h1>
+      <h1 className="h1-home">INSCRIPCIONES</h1>
       <div className="estudiantes-size">
         <div className="estudiantes-container">
           {ITEMS.map((item, index) => {

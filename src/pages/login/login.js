@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-function Login() {
+function Login({ setIsLogged }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [remember, setRemember] = useState(false);
@@ -21,8 +21,8 @@ function Login() {
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
-      theme: "colored",
-      transition: "Bounce",
+      theme: "colored"
+      // transition: "Bounce",
     });
 
   const handleSubmit = (e) => {
@@ -37,6 +37,7 @@ function Login() {
       .then((response) => {
         loginSatisfactorio();
         localStorage.setItem("token", response.data.access_token);
+        setIsLogged(true);
         navigate("/");
 
       })
@@ -78,7 +79,7 @@ function Login() {
             />
             {errores.password && <p className="input-error">{errores.password[0]}</p>}
           </div>
-          <div classname="d-flex">
+          <div className="d-flex">
             <label className="mx-3">Recordar</label>
             <input
               className="input-form-checkbox"
@@ -92,8 +93,8 @@ function Login() {
           </div>
           <button className="button-form" type="submit" disabled={loading}>
             {loading ? (
-              <div class="spinner-border" role="status">
-                <span class="visually-hidden">Loading...</span>
+              <div className="spinner-border" role="status">
+                <span className="visually-hidden">Loading...</span>
               </div>
             ) : (
               "Ingresar"

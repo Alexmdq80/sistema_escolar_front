@@ -1,20 +1,20 @@
 import { React } from "react";
 import "./espacios_academicos.css";
-import MisAlquileres from "../../components/misAlquileres/misAlquileres";
+import espaciosAcademicos from "../../components/espaciosAcademicos/espaciosAcademicos";
 
-function Alquileres() {
+function Espacios_Academicos() {
   const ITEMS = [
     { title: "BICICLETA 1", description: "Modelo 2023" },
     { title: "BICICLETA 2", description: "Modelo 2023" },
   ];
   return (
     <div className="main-home">
-      <h1 className="h1-home">MIS ALQUILERES</h1>
-      <div className="bicicletas-disp-size">
-        <div className="bicicletas-disp-container">
+      <h1 className="h1-home">ESPACIOS ACADÉMICOS</h1>
+      <div className="espacios_academicos-size">
+        <div className="espacios_academicos-container">
           {ITEMS.map((item, index) => {
             return (
-              <MisAlquileres
+              <espaciosAcademicos
                 key={index}
                 title={item.title}
                 description={item.description}
@@ -27,4 +27,4 @@ function Alquileres() {
   );
 }
 
-export default Alquileres;
+export default Espacios_Academicos;

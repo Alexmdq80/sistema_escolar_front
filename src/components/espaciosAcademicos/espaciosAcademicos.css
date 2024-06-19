@@ -1,4 +1,4 @@
-.bic-disp-container {
+.espaciosAcademicos-container {
     width: 200px;
     height: 200px;
     background-color: #555555;
@@ -12,7 +12,7 @@
     overflow: hidden;
 }
 
-.bici-disp-button {
+.espaciosAcademicos-button {
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -23,7 +23,7 @@
     border: none;
 }
 
-.bici-disp-button:hover {
+.espaciosAcademicos-button:hover {
     background-color: #e0e0e0;
     cursor: pointer;
 }

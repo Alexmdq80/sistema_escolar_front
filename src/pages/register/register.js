@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-function Register() {
+function Register({ setIsLogged }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -16,7 +16,7 @@ function Register() {
   // async function handleSubmit(e) => {
 
   const registroSatisfactorio = () =>
-    toast.success("Registrado correctamente!!", {
+    toast.success("Registrado correctamente!", {
       position: "bottom-right",
       autoClose: 5000,
       hideProgressBar: false,
@@ -24,8 +24,8 @@ function Register() {
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
-      theme: "colored",
-      transition: "Bounce",
+      theme: "colored"
+      // transition: "Bounce",
     });
 
   const handleSubmit = (e) => {
@@ -40,6 +40,7 @@ function Register() {
       .then((response) => {
         registroSatisfactorio();
         localStorage.setItem("token", response.data.access_token);
+        setIsLogged(true);
         navigate("/");
 
       })
@@ -105,8 +106,8 @@ function Register() {
           </div>
           <button className="button-form" type="submit" disabled={loading}>
             {loading ? (
-              <div class="spinner-border" role="status">
-                <span class="visually-hidden">Loading...</span>
+              <div className="spinner-border" role="status">
+                <span className="visually-hidden">Loading...</span>
               </div>
             ) : (
               "Registrarse"
