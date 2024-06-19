@@ -1,29 +1,50 @@
-import { React } from "react";
+import { React, useState, useEffect } from "react";
 import "./home.css";
-import Estudiantes from "../../components/estudiantes/estudiantes";
+import Personas from "../../components/personas/personas";
+import axios from "axios";
 
 function Home() {
-  const ITEMS = [
-    { title: "ESTUDIANTE 1", description: "Modelo 2023" },
-    { title: "ESTUDIANTE 2", description: "Modelo 2023" },
-    { title: "ESTUDIANTE 3", description: "Modelo 2023" },
-    { title: "ESTUDIANTE 4", description: "Modelo 2023" },
-  ];
+  const [personas, setPersonas] = useState(null);
+
+  useEffect(() => {
+    axios
+      .get("personas", {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+        },
+      })
+      .then((response) => {
+        console.log(response);
+        setPersonas(response.data);
+        // setPersonas(JSON.stringify(response.data.data));
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+  }, []);
+
   return (
-    <div className="main-home">
-      <h1 className="h1-home">INSCRIPCIONES</h1>
-      <div className="estudiantes-size">
-        <div className="estudiantes-container">
-          {ITEMS.map((item, index) => {
+    <div className="container">
+      <h1 className="display-5 text-center my-5">Personas</h1>
+      <div className="row">
+        {!personas && (
+          <div className="d-flex justify-content-center">
+            <div className="spinner-border" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </div>
+          </div>
+        )}
+        {
+          personas &&
+          personas.map((persona, index) => {
             return (
-              <Estudiantes
+              <Personas
                 key={index}
-                title={item.title}
-                description={item.description}
+                nombre={persona.nombre}
+                apellido={persona.apellido}
               />
             );
-          })}
-        </div>
+          })};
       </div>
     </div>
   );

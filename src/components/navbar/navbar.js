@@ -26,7 +26,7 @@ function Navbar({ isLogged, setIsLogged }) {
         {isLogged && (
           <>
             <Link to="/home">
-              <h3 className="navbar-h3">Inscripciones</h3>
+              <h3 className="navbar-h3">Personas</h3>
             </Link>
             <Link to="/espacios_academicos">
               <h3 className="navbar-h3">Espacios Académicos</h3>
